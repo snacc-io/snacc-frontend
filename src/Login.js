@@ -41,6 +41,7 @@ function Login() {
                 <img
                     className="login__logo"
                     src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png' 
+                    alt=""
                 />
             </Link>
 
@@ -54,7 +55,7 @@ function Login() {
                     <h5>Password</h5>
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
 
-                    <button type='submit' className='login__signInButton'>Sign In</button>
+                    <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
                 </form>
 
                 <p>
