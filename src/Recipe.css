@@ -1,4 +1,4 @@
-.product {
+.recipe {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,30 +12,30 @@
     z-index: 1;
 }
 
-.product__rating {
+.recipe__rating {
     display: flex;
 }
 
-.product > img {
+.recipe > img {
     max-height: 200px;
     width: 100%;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
-.product > button {
-    background: #f0c14b;
+.recipe > button {
+    background: lightgray;
     border: 1px solid;
     margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
+    border-color: darkgrey;
     color: #111;
 }
 
-.product__price {
+.recipe__price {
     margin-top: 5px;
 }
 
-.product__info {
+.recipe__info {
     height: 100px;
     margin-bottom: 15px;
 }

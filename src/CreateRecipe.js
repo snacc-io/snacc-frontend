@@ -1,27 +1,27 @@
 import React from "react";
-import "./Checkout.css";
+import "./CreateRecipe.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "./StateProvider";
-import CheckoutProduct from "./CheckoutProduct";
+//import CreateRecipe from "./CreateRecipe";
 
-function Checkout() {
+function CreateRecipe() {
   const [{ basket, user }, dispatch] = useStateValue();
 
   return (
-    <div className="checkout">
-      <div className="checkout__left">
+    <div className="CreateRecipe">
+      <div className="CreateRecipe__left">
         <img
-          className="checkout__ad"
-          src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
+          className="CreateRecipe__ad"
+          src="#todo"
           alt="ad"
         />
 
         <div>
           <h3>Hello, {user?.email}</h3>
-          <h2 className="checkout__title">Your shopping basket</h2>
+          <h2 className="CreateRecipe__title">Your shopping basket</h2>
 
           {basket.map((item) => (
-            <CheckoutProduct
+            <CreateRecipe
               id={item.id}
               title={item.title}
               image={item.image}
@@ -32,11 +32,11 @@ function Checkout() {
         </div>
       </div>
 
-      <div className="checkout__right">
+      <div className="CreateRecipe__right">
         <Subtotal />
       </div>
     </div>
   );
 }
 
-export default Checkout;
+export default CreateRecipe;

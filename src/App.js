@@ -5,7 +5,7 @@ import Home from "./Home";
 import Header from "./Header";
 import Login from "./Login";
 import { auth } from "./firebase";
-import Checkout from "./Checkout"
+import CreateRecipe from "./CreateRecipe"
 
 
 
@@ -42,9 +42,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/checkout">
+          <Route path="/CreateRecipe">
             <Header />
-            <Checkout />
+            <CreateRecipe />
           </Route>
           <Route path="/">
             <Header />

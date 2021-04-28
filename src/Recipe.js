@@ -1,11 +1,11 @@
 import React from "react";
-import "./Product.css";
+import "./Recipe.css";
 import { useStateValue } from "./StateProvider";
 
-function Product({ id, title, image, price, rating }) {
+function Recipe({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
 
-  const addToBasket = () => {
+  const openRecipe = () => {
     // dispatch the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",
@@ -20,14 +20,10 @@ function Product({ id, title, image, price, rating }) {
   };
 
   return (
-    <div className="product">
-      <div className="product__info">
+    <div className="recipe">
+      <div className="recipe__info">
         <p>{title}</p>
-        <p className="product__price">
-          <small>$</small>
-          <strong>{price}</strong>
-        </p>
-        <div className="product__rating">
+        <div className="recipe__rating">
           {Array(rating)
             .fill()
             .map((_, i) => (
@@ -38,9 +34,9 @@ function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt={title} />
 
-      <button onClick={addToBasket}>Add to Basket</button>
+      <button onClick={openRecipe}>View Recipe</button>
     </div>
   );
 }
 
-export default Product;
+export default Recipe;

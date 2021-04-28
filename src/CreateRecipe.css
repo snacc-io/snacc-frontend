@@ -1,4 +1,4 @@
-.checkout {
+.CreateRecipe {
     display: flex;
     padding: 20px;
     background-color: white;
@@ -6,12 +6,12 @@
 }
 
 
-.checkout__ad {
+.CreateRecipe__ad {
     width: 100%;
     margin-bottom: 10px;
 }
 
-.checkout__title {
+.CreateRecipe__title {
     margin-right: 10px;
     padding: 10px;
     border-bottom: 1px solid lightgray;
