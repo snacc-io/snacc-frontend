@@ -1,13 +1,4 @@
-.header {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #8D021F;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
+
   .header__logo {
     width: 100px;
     object-fit: contain;
@@ -32,7 +23,7 @@
   .header__searchIcon {
     padding: 5px;
     height: 22px !important;
-    background-color: #8D021F;
+    background-color: lightgray;
   }
   
   .header__optionLineOne {

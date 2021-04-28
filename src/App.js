@@ -6,6 +6,8 @@ import Header from "./Header";
 import Login from "./Login";
 import { auth } from "./firebase";
 import CreateRecipe from "./CreateRecipe"
+import './carousel.css';
+import Footer from "./Footer"
 
 
 
@@ -40,15 +42,18 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/login">
+            <Header />
             <Login />
           </Route>
           <Route path="/CreateRecipe">
             <Header />
             <CreateRecipe />
+            <Footer />
           </Route>
           <Route path="/">
             <Header />
             <Home />
+            <Footer />
           </Route>
         </Switch>
       </div>
