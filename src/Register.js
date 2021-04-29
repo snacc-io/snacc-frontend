@@ -1,25 +1,16 @@
-
 import React, { useState } from 'react';
 import './Login.css'
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./firebase";
 
-function Login() {
+
+function Register() {
+
     const history = useHistory(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
 
-    const signIn = e => {
-        e.preventDefault();
-
-        auth
-            .signInWithEmailAndPassword(email, password)
-            .then(auth => {
-                history.push('/')
-            })
-            .catch(error => alert(error.message))
-    }
 
     const register = e => {
         e.preventDefault();
@@ -35,20 +26,24 @@ function Login() {
             .catch(error => alert(error.message))
     }
 
+
     return (
-        
         <div>
         <div className="container marketing">
         <div className="jumbotron jumbotron-fluid">
         <div className="container">
 
          <div>
-                <h1 className="display-4">Sign-in</h1>
+                <h1 className="display-4">Create an account</h1>
 
                 <input type="hidden" name="_next" value="#"/>
                 <input type="hidden" name="_subject" value="New submission!"/>
 
                 <form role="form" action="#todo" method="POST">
+                    <div className="form-group">
+                        <label for="InputName">Username</label>
+                        <input type='text' className="form-control" placeholder="Enter the username you whish to use" required=""/>
+                    </div>
                     <div className="form-group">
                         <label for="InputName">Email</label>
                         <input type='text' className="form-control" placeholder="Enter your email" required="" value={email} onChange={e => setEmail(e.target.value)} />
@@ -59,11 +54,11 @@ function Login() {
                         <input type='password'  className="form-control" placeholder="Enter your password" required="" value={password} onChange={e => setPassword(e.target.value)} />
                     </div>
 
-                    <button type='submit' className="btn btn-info pull-right" onClick={signIn} >Sign In</button>
+                    <button type='submit' className="btn btn-info pull-right" onClick={register} >Register</button>
                 </form>
                 <hr className="hidden-lg"/>
                 <p>
-                    By signing in you agree to the terms of use for Snacc.io's simple recipe website
+                    By creating an account in you agree to the terms of use for Snacc.io's simple recipe website
                 </p>
 
 
@@ -75,8 +70,8 @@ function Login() {
 
 
         <div className="container">
-            <p>Note to TAs: Authentification is handled via firebase (Google auth) as we did not wish to store sensitive data like passwords in our database. </p>
-
+            <p>Note to TAs: Authentification is handled via firebase (Google auth) as we did not wish to store sensitive data like passwords in our database.  </p>
+            <p>Password and email is passed to firebase auth. All data except for password is posted to the database. userID is automatically generated.</p>
         </div>
     </div>
     </div>     
@@ -84,4 +79,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Register

@@ -24,7 +24,7 @@ function Header() {
     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a className="navbar-brand" href="#">Snacc.io</a>
       <div className="header__search">
-        <input className="header__searchInput" type="text" />
+        <input className="header__searchInput" placeholder="Search for a recipe" type="text" />
         <SearchIcon className="header__searchIcon" />
       </div>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -37,14 +37,12 @@ function Header() {
       </div>
       <div className="header__nav">
         <Link to={!user && '/login'}>
-          <div onClick={handleAuthenticaton} className="header__option">
+          <div  onClick={handleAuthenticaton} className="header__option">
             <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>        
 
-        <Link to="/createRecipe">
 
-        </Link>
       </div>
     </nav>
   </header>

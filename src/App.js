@@ -9,7 +9,10 @@ import CreateRecipe from "./CreateRecipe"
 import './carousel.css';
 import Footer from "./Footer"
 import RecipePage from "./RecipePage"
-
+import Ingredient from "./Ingredient"
+import Register from "./Register"
+import CreateReview from "./CreateReview"
+import IndexPage from "./indexPage"
 
 
 function App() {
@@ -42,18 +45,46 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+        <Route path="/index">
+            <Header />
+            <IndexPage />
+            <Footer />
+          </Route>
           <Route path="/login">
             <Header />
             <Login />
+            <Footer />
+          </Route>
+          <Route path="/register">
+            <Header />
+            <Register />
+            <Footer />
+          </Route>
+          <Route path="/ingredient">
+            <Header />
+            <Ingredient />
+            <Footer />
+          </Route>
+          <Route path="/CreateReview">
+            <Header />
+            <CreateReview />
+            <Footer />
           </Route>
           <Route path="/CreateRecipe">
             <Header />
             <CreateRecipe />
             <Footer />
           </Route>
-          <Route path="/Recipe">
+          <Route path="/recipe">
             <Header />
-            <RecipePage />
+            <RecipePage 
+                id="12321341"
+                title="Some tasty recipe"
+                titleBlurb="A delicious thing to eat"
+                description="Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum "
+                rating={5}
+                image="https://pro2-bar.myportfolio.com/v1/assets/f015544c-b38d-49fc-a1d1-7e906e042eee/1eff550b-2fe8-43a0-bc5c-d1771d4a4840_rw_1920.jpg?h=1270724a86b5a957115c200af1d66551"
+            />
             <Footer />
           </Route>
           <Route path="/">

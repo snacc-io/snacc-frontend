@@ -29,7 +29,7 @@ function Carousel() {
       <div className="container">
         <div className="carousel-caption opaque-box">
           <h1>ipsum dolor</h1>
-          <p>Our handcrafted cannoli are made of the freshest, most wholesome ingredients on the market.</p>
+          <p>Lorem ipsum dolor sit ame</p>
         </div>
       </div>
     </div>
@@ -39,8 +39,8 @@ function Carousel() {
         alt="Third slide"/>
       <div className="container">
         <div className="carousel-caption text-right opaque-box">
-          <h1>Gluten Free & Natural</h1>
-          <p>Everything produced in our home bakery is made from completely gluten free goodness.</p>
+          <h1>dolor sit amet</h1>
+          <p>Lorem ipsum dolor sit ame</p>
         </div>
       </div>
     </div>
