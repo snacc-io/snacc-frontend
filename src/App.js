@@ -8,6 +8,7 @@ import { auth } from "./firebase";
 import CreateRecipe from "./CreateRecipe"
 import './carousel.css';
 import Footer from "./Footer"
+import RecipePage from "./RecipePage"
 
 
 
@@ -48,6 +49,11 @@ function App() {
           <Route path="/CreateRecipe">
             <Header />
             <CreateRecipe />
+            <Footer />
+          </Route>
+          <Route path="/Recipe">
+            <Header />
+            <RecipePage />
             <Footer />
           </Route>
           <Route path="/">
