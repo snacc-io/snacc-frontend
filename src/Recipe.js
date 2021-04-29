@@ -1,41 +1,34 @@
 import React from "react";
 import "./Recipe.css";
-import { useStateValue } from "./StateProvider";
 
-function Recipe({ id, title, image, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
+function Recipe({ id, title, titleBlurb, description, image, rating }) {
 
-  const openRecipe = () => {
-    // dispatch the item into the data layer
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
-        id: id,
-        title: title,
-        image: image,
-        price: price,
-        rating: rating,
-      },
-    });
-  };
+
+
 
   return (
-    <div className="recipe">
-      <div className="recipe__info">
-        <p>{title}</p>
-        <div className="recipe__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p>🌟</p>
-            ))}
+    
+
+        <div className="row featurette">
+          <div className="col-md-7 order-md-2">
+              <h2 className="featurette-heading">{title}: <span className="text-muted">{titleBlurb}</span></h2>
+              <div className="recipe__rating">
+                {Array(rating)
+                  .fill()
+                  .map((_, i) => (
+                    <p>🌟</p>
+                  ))}
+              </div>
+              <p className="lead">{description}</p>
+            </div>
+            <div className="col-md-5">
+              <img className="featurette-image img-fluid mx-auto square-500"
+                src={image}
+                alt={title}/>
         </div>
-      </div>
-
-      <img src={image} alt={title} />
-
-      <button onClick={openRecipe}>View Recipe</button>
     </div>
+    
+
   );
 }
 
