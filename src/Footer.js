@@ -5,7 +5,7 @@ function Footer() {
 
   return (
     <footer className="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
+        <p className="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2021 Snacc.io </p>
     </footer>
   );
