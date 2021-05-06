@@ -31,13 +31,20 @@ function indexPage() {
             <p>This page is an index of all nescessary pages for TA's to grade during this project step.</p>
            
             <hr className="featurette-divider"/>
-            <ul class="list-group">
-                <li class="list-group-item"><Link to="/">Home Page</Link> </li>
-                <li class="list-group-item"><Link to="/login">login</Link> </li>
-                <li class="list-group-item"><Link to="/register">Create Account (add user)</Link> </li>
-                <li class="list-group-item"><Link to="/CreateReview">Write Review</Link></li>
-                <li class="list-group-item"><Link to="/recipe">View Recipe</Link></li>
-                <li class="list-group-item"><Link to="/ingredient">Add Ingredient</Link></li>
+            <ul className="list-group">
+                <li className="list-group-item"><Link to="/">Home Page</Link> </li>
+                <li className="list-group-item"><Link to="/login">login</Link> </li>
+                <li className="list-group-item"><Link to="/register">Create Account (add user)</Link> </li>
+                <li className="list-group-item"><Link to="/CreateRecipe">Create Recipe</Link></li>
+                <li className="list-group-item"><Link to="/CreateReview">Write Review</Link></li>
+                <li className="list-group-item"><Link to="/recipe">View Recipe</Link></li>
+                <li className="list-group-item"><Link to="/ingredient">Add Ingredient</Link></li>
+                <li className="list-group-item"><Link to="/RecipesIngredientsTable">RecipesIngredients table view</Link></li>
+                <li className="list-group-item"><Link to="/UsersTable">Users Table view</Link></li>
+                <li className="list-group-item"><Link to="/RecipesTable">Recipes Table view</Link></li>
+                <li className="list-group-item"><Link to="/IngredientsTable">Ingredients Table view</Link></li>
+                <li className="list-group-item"><Link to="/ReviewsTable">Reviews table view</Link></li>
+
             </ul>
             
 
