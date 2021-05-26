@@ -25,7 +25,7 @@ app.get("/api/:table", (req, res) => {
 });
 
 app.post("/api/:table/Insert", (req, res) => {
-  const SQLQuery = `INSERT INTO ${req.params.table}(recipeName, recipeDescription, recipeImageURL, recipeInstructions, cookingTime, userID) VALUES(${req.body.nameInput}, ${req.body.descriptionInput}, ${req.body.imageURL}, ${req.body.instructionsInput}, ${req.body.cookingTimeInput}, ${req.body.userIDInput});`;
+  const SQLQuery = `INSERT INTO ${req.params.table}(recipeID, recipeName, recipeDescription, recipeImageURL, recipeInstructions, cookingTime, views, rating, userID) VALUES(${req.body.recipeID}, \"${req.body.recipeName}\", \"${req.body.recipeDescription}\", \"${req.body.recipeImageURL}\", \"${req.body.recipeInstructions}\", ${req.body.cookingTime}, ${req.body.views}, ${req.body.rating}, ${req.body.userID});`;
 
   db.query(SQLQuery, (err, result) => {
     if (err) console.log(err);
