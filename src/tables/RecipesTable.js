@@ -50,7 +50,7 @@ function RecipesTable() {
             imageURL: imageURL,
           },
         ]);
-      } else alert("Faiiled query");
+      } else alert("Failed query");
     });
   };
 
