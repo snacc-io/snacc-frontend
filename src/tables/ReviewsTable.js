@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Axios from "axios"
 
 function ReviewsTable() {
+
+
+  const [SQLQuery, setSQLQeury] = useState("");
+  const [queryResponse, setQueryRespose] = useState([]);
+
+  useEffect(() => {
+    Axios.get("https://8b3ea4cc0292.ngrok.io/api/Reviews").then((response) => {
+      setQueryRespose(response.data);
+    });
+  });
+
+
     return (
         <div className="home__container">
         <div className="container my-5">
@@ -79,37 +92,22 @@ function ReviewsTable() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>51324</td>
-                <td>1234</td>
-                <td>2655246</td>
-                <td>4</td>
-                <td>It was delicious</td>
-                <td>not displayed</td>
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-              </tr>
-              <tr>
-                <td>67587</td>
-                <td>3567</td>
-                <td>2</td>
-                <td>3.99</td>
-                <td>I hated it</td>
-                <td>not displayed</td>
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-              </tr>
-              <tr>
-                <td>43</td>
-                <td>365421</td>
-                <td>26</td>
-                <td>1</td>
-                <td>My grandma's favorite</td>
-                <td>not displayed</td>
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-              </tr>
-             
+  `            {queryResponse.map((review) => {
+                  return (
+                    <tr>
+                      <td>{review.reviewID}</td>
+                      <td>{review.userID}</td>
+                      <td>{review.recipeID}</td>
+                      <td>{review.rating}</td>
+                      <td>{review.comment}</td>
+                      <td>{review.image}</td>
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
+                      <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                    </tr>
+
+                  );
+                })}`
+              
             </tbody>
           </table>
         </div>

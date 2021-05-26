@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Axios from "axios"
+
+
 
 function IngredientsTable() {
+
+
+  const [SQLQuery, setSQLQeury] = useState("");
+  const [queryResponse, setQueryRespose] = useState([]);
+
+  useEffect(() => {
+    Axios.get("https://8b3ea4cc0292.ngrok.io/api/Ingredients").then((response) => {
+      setQueryRespose(response.data);
+    });
+  });
+
+
+
     return (
         <div className="home__container">
         <div className="container my-5">
@@ -43,12 +59,17 @@ function IngredientsTable() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>514253</td>
-                <td>potato</td>
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-              </tr>
+            {queryResponse.map((ingredient) => {
+                return (
+                  <tr>
+                    <td>{ingredient.ingredientID}</td>
+                    <td>{ingredient.ingredientName}</td>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
+                    <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                  </tr>
+
+                );
+              })}
               
             </tbody>
           </table>

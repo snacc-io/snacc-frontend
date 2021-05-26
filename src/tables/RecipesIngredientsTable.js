@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Axios from "axios"
 
 function RecipesIngredientsTable() {
+
+
+
+
+  const [SQLQuery, setSQLQeury] = useState("");
+  const [queryResponse, setQueryRespose] = useState([]);
+
+  useEffect(() => {
+    Axios.get("https://8b3ea4cc0292.ngrok.io/api/RecipesIngredients").then((response) => {
+      setQueryRespose(response.data);
+    });
+  });
+
+
+
+
     return (
         <div>
             <div className="home__container">
@@ -45,30 +62,17 @@ function RecipesIngredientsTable() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>4512</td>
-              <td>12543</td>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-            </tr>
-            <tr>
-              <td>76512</td>
-              <td>5244</td>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-            </tr>
-            <tr>
-              <td>6798</td>
-              <td>5678</td>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-            </tr>
-            <tr>
-              <td>12354</td>
-              <td>51243</td>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
-            </tr>
+              {queryResponse.map((recipe_ingredient) => {
+                    return (
+                      <tr>
+                        <td>{recipe_ingredient.recipeID}</td>
+                        <td>{recipe_ingredient.ingredientID}</td>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
+                        <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                      </tr>
+
+                    );
+                  })}
           </tbody>
         </table>
       </div>
