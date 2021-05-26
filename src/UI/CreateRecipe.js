@@ -1,6 +1,6 @@
 import React from "react";
 import "./CreateRecipe.css";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./../StateProvider";
 
 
 function CreateRecipe() {

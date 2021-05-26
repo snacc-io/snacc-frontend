@@ -1,5 +1,5 @@
 import React from "react";
-import "./Recipe.css";
+import "./../components/Recipe.css";
 import Rating from "@material-ui/lab/Rating";
 
 function Recipe({ id, title, titleBlurb, description, image, rating }) {

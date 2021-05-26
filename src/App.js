@@ -2,23 +2,22 @@ import React, { useEffect, dispatch } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import Header from "./Header";
-import Login from "./Login";
+import Header from "./components/Header";
+import Login from "./UI/Login";
 import { auth } from "./firebase";
-import CreateRecipe from "./CreateRecipe";
-import "./carousel.css";
-import Footer from "./Footer";
-import RecipePage from "./RecipePage";
-import Ingredient from "./Ingredient";
-import Register from "./Register";
-import CreateReview from "./CreateReview";
-import IndexPage from "./indexPage";
-import Admin from "./Admin";
-import RecipesIngredientsTable from "./RecipesIngredientsTable"
-import UsersTable from "./UsersTable"
-import ReviewsTable from "./ReviewsTable"
-import RecipesTable from "./RecipesTable"
-import IngredientsTable from "./IngredientsTable"
+import CreateRecipe from "./UI/CreateRecipe";
+import "./components/carousel.css";
+import Footer from "./components/Footer";
+import RecipePage from "./UI/RecipePage";
+import Ingredient from "./UI/Ingredient";
+import Register from "./UI/Register";
+import CreateReview from "./UI/CreateReview";
+import IndexPage from "./UI/indexPage";
+import RecipesIngredientsTable from "./tables/RecipesIngredientsTable"
+import UsersTable from "./tables/UsersTable"
+import ReviewsTable from "./tables/ReviewsTable"
+import RecipesTable from "./tables/RecipesTable"
+import IngredientsTable from "./tables/IngredientsTable"
 
 function App() {
   useEffect(() => {
@@ -86,11 +85,6 @@ function App() {
           <Route path="/ReviewsTable">
             <Header />
             <ReviewsTable />
-            <Footer />
-          </Route>
-          <Route path="/admin">
-            <Header />
-            <Admin />
             <Footer />
           </Route>
           <Route path="/login">

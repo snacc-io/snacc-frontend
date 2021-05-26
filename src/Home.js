@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
-import Recipe from "./Recipe";
-import Carousel from "./Carousel";
+import Recipe from "./components/Recipe";
+import Carousel from "./components/Carousel";
 
 function Home() {
   return (

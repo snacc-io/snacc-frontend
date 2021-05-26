@@ -1,8 +1,5 @@
 import React from 'react'
-import "./Home.css"
-import Carousel from "./Carousel"
-import "./carousel.css"
-import "./Recipe.css"
+import "./../Home.css"
 import { Link } from "react-router-dom"
 
 
@@ -34,12 +31,12 @@ function indexPage() {
             <ul className="list-group">
                 <p>This first set of links are to the User facing UI and are not relevant to the rubric/project step</p>
                 <li className="list-group-item"><Link to="/">Home Page</Link> </li>
-                <li className="list-group-item"><Link to="/login">login</Link> </li>
+                {/* <li className="list-group-item"><Link to="/login">login</Link> </li>
                 <li className="list-group-item"><Link to="/register">Create Account (add user)</Link> </li>
                 <li className="list-group-item"><Link to="/CreateRecipe">Create Recipe</Link></li>
                 <li className="list-group-item"><Link to="/CreateReview">Write Review</Link></li>
                 <li className="list-group-item"><Link to="/recipe">View Recipe</Link></li>
-                {/* <li className="list-group-item"><Link to="/ingredient">Add Ingredient</Link></li> */}
+                <li className="list-group-item"><Link to="/ingredient">Add Ingredient</Link></li> */}
                 
                 <p>All the links below here are to admin/table management pages.</p>
                 <li className="list-group-item"><Link to="/RecipesIngredientsTable">RecipesIngredients table view</Link></li>
