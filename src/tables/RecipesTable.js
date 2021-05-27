@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { api } from "../config.js"
 
 function RecipesTable() {
   const [SQLQuery, setSQLQeury] = useState("");
@@ -16,14 +17,15 @@ function RecipesTable() {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-    // Axios.get("https://8b3ea4cc0292.ngrok.io/api/Recipes").then((response) => {
-    Axios.get("http://localhost:3001/api/Recipes").then((response) => {
+    Axios.get(`${api.url}/api/Recipes`).then((response) => {
+    // Axios.get(`http://localhost:3001/api/Recipes`).then((response) => {
       setQueryResponse(response.data);
     });
   }, []);
 
   const insertRecipeQuery = () => {
-    Axios.post("http://localhost:3001/api/Recipes/Insert", {
+    Axios.post(`${api.url}/api/Recipes/Insert`, {
+    // Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
       recipeID: recipeID,
       userID: userID,
       recipeName: recipeName,
@@ -58,7 +60,8 @@ function RecipesTable() {
 
   const deleteQuery = (ID) => {
     return () => {
-      Axios.post("http://localhost:3001/api/Recipes/Delete", {
+      Axios.post(`${api.url}/api/Recipes/Delete`, {
+      // Axios.post(`http://localhost:3001/api/Recipes/Delete`, {
         id: ID,
       }).then((response) => {
         if (response) {

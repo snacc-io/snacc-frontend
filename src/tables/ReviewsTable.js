@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Axios from "axios"
+import { api } from "../config.js"
 
 function ReviewsTable() {
 
@@ -8,10 +9,11 @@ function ReviewsTable() {
   const [queryResponse, setQueryRespose] = useState([]);
 
   useEffect(() => {
-    Axios.get("https://8b3ea4cc0292.ngrok.io/api/Reviews").then((response) => {
+      Axios.get(`${api.url}/api/Reviews`).then((response) => {
+      // Axios.get(`http://localhost:3001/api/Reviews`).then((response) => {
       setQueryRespose(response.data);
     });
-  });
+  }, []);
 
 
     return (
