@@ -61,7 +61,6 @@ function RecipesTable() {
   const deleteQuery = (ID) => {
     return () => {
       Axios.post(`${api.url}/api/Recipes/Delete`, {
-      // Axios.post(`http://localhost:3001/api/Recipes/Delete`, {
         id: ID,
       }).then((response) => {
         if (response) {

@@ -3,6 +3,7 @@ import Axios from "axios"
 import { api } from "../config.js"
 
 function RecipesIngredientsTable() {
+  
 
 
 
@@ -10,20 +11,57 @@ function RecipesIngredientsTable() {
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryRespose] = useState([]);
 
+  const [recipeID, setRecipeID] = useState(0);
+  const [ingredientID, setIngredientID] = useState();
+
   useEffect(() => {
-      Axios.get(`${api.url}/api/RecipesIngredients`).then((response) => {
-      // Axios.get(`http://localhost:3001/api/RecipesIngredients`).then((response) => {
+      Axios.get(`${api.url}/api/RecipeIngredients`).then((response) => {
       setQueryRespose(response.data);
       console.log("Query succesfuly")
     });
   }, []);
 
+  const insertRecipesIngredientsQUery = () => {
+    Axios.post(`${api.url}/api/RecipeIngredients/Insert`, {
+        recipeID: recipeID,
+        ingredientID: ingredientID,
+      }).then((response) => {
+        if (response.data) {
+          alert("successful query");
+          setQueryResponse([
+            ...queryResponse,
+            {
+              recipeID: recipeID,
+              ingredientID: ingredientID,
+            },
+          ]);
+        } else alert("Failed query");
+      });
+  }
 
+  const updateQuery = (ID) => {};
+
+  const deleteQuery = (ID) => {
+    return () => {
+      Axios.post(`${api.url}/api/RecipeIngredients/Delete`, {
+        id: ID,
+      }).then((response) => {
+        if (response) {
+          alert("successful query");
+          setQueryResponse(
+            queryResponse.filter((val) => {
+              return val.recipeIngredientID !== ID;  /// Need to figure out how to reference composite key
+            })
+          );
+        } else alert("Failed query");
+      });
+    };
+  };
 
 
     return (
         <div>
-            <div className="home__container">
+      <div className="home__container">
       <div className="container my-5">
       <form>
         <div className="form-row">
@@ -33,6 +71,10 @@ function RecipesIngredientsTable() {
               type="text"
               className="form-control"
               placeholder="recipeID"
+              name="recipeID"
+              onChange={(e) => {
+                setRecipeID(e.targetValue);
+              }}
             />
           </div>
           <div className="col">
@@ -41,13 +83,23 @@ function RecipesIngredientsTable() {
               type="text"
               className="form-control"
               placeholder="ingredientID"
+              name="ingredientID"
+              onChange={(e) => {
+                setIngredientID(e.target.value);
+              }}
             />
           </div>
          
           
           <div className="col">
               <label>new entry </label>
-              <button type="button" className="btn btn-primary" data-dismiss="modal">Add</button>
+              <button type="button" 
+              className="btn btn-primary" 
+              data-dismiss="modal"
+              onClick={insertRecipesIngredientsQUery}
+              >
+                Add
+              </button>
           </div>
          
          
@@ -70,8 +122,21 @@ function RecipesIngredientsTable() {
                       <tr>
                         <td>{recipe_ingredient.recipeID}</td>
                         <td>{recipe_ingredient.ingredientID}</td>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button 
+                          type="button" 
+                          className="btn btn-secondary" 
+                          data-dismiss="modal"
+                        >
+                          Update
+                        </button>
+                        <button 
+                          type="button" 
+                          className="btn btn-danger" 
+                          data-dismiss="modal"
+                          onClick={deleteQuery(recipe_ingredient.id)} //TODO figure out how to reference the composite key
+                        >
+                          Delete
+                       </button>
                       </tr>
 
                     );

@@ -8,12 +8,57 @@ function UsersTable() {
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryRespose] = useState([]);
 
+  const [userID, setUserID] = useState(0);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+
+
   useEffect(() => {
       Axios.get(`${api.url}/api/Users`).then((response) => {
-      // Axios.get(`http://localhost:3001/api/Users`).then((response) => {
       setQueryRespose(response.data);
     });
   }, []);
+
+
+  const insertUserQuery = () => {
+    Axios.post(`${api.url}/api/Users/Insert`, {
+      userID: userID,
+      username: username,
+      email: email,
+    }).then((response) => {
+      if (response.data) {
+        alert("successful query");
+        setQueryResponse([
+          ...queryResponse,
+          {
+            userID: userID,
+            username: username,
+            email: email,
+          },
+        ]);
+      } else alert("Failed query");
+    });
+  };
+
+  const updateQuery = (ID) => {};
+
+  const deleteQuery = (ID) => {
+    return () => {
+      Axios.post(`${api.url}/api/Users/Delete`, {
+        id: ID,
+      }).then((response) => {
+        if (response) {
+          alert("successful query");
+          setQueryResponse(
+            queryResponse.filter((val) => {
+              return val.userID !== ID;
+            })
+          );
+        } else alert("Failed query");
+      });
+    };
+  };
 
 
 
@@ -28,6 +73,9 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="userID"
+                onChange={(e) => {
+                  setUserID(e.target.value);
+                }}
               />
             </div>
             <div className="col">
@@ -36,6 +84,9 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="username"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </div>
            
@@ -45,12 +96,22 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
            
             <div className="col">
                 <label>new entry </label>
-                <button type="button" className="btn btn-primary" data-dismiss="modal">Add</button>
+                <button 
+                  type="button" 
+                  className="btn btn-primary" 
+                  data-dismiss="modal"
+                  onClick={insertUserQuery}
+                  >
+                    Add
+                  </button>
             </div>
            
            
@@ -76,8 +137,21 @@ function UsersTable() {
                     <td>{user.userID}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                    <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button 
+                    type="button" 
+                    className="btn btn-secondary" 
+                    data-dismiss="modal"
+                    >
+                      Update
+                    </button>
+                    <button 
+                      type="button" 
+                      className="btn btn-danger" 
+                      data-dismiss="modal"
+                      onClick={deleteQuery(user.userID)}
+                      >
+                        Delete
+                     </button>
                   </tr>
 
                 );

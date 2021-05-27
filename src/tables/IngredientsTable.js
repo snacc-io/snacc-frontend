@@ -10,12 +10,52 @@ function IngredientsTable() {
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryRespose] = useState([]);
 
+  const [ingredientID, setIngredientID] = useState(0);
+  const [ingredientName, setIngredientName] = useState("");
+
   useEffect(() => {
       Axios.get(`${api.url}/api/Ingredients`).then((response) => {
-        // Axios.get(`http://localhost:3001/api/Ingredients`).then((response) => {
       setQueryRespose(response.data);
     });
   }, []);
+
+
+  const insertIngredientQuery = () => {
+    Axios.post(`${api.url}/api/Ingredients/Insert`, {
+      ingredientID: ingredientID,
+      ingredientName: ingredientName,
+    }).then((response) => {
+      if (response.data) {
+        alert("successful query");
+        setQueryResponse([
+          ...queryResponse,
+          {
+            ingredientID: ingredientID,
+            ingredientName: ingredientName,
+          },
+        ]);
+      } else alert("Failed query");
+    });
+  };
+
+  const updateQuery = (ID) => {};
+
+  const deleteQuery = (ID) => {
+    return () => {
+      Axios.post(`${api.url}/api/Ingredients/Delete`, {
+        id: ID,
+      }).then((response) => {
+        if (response) {
+          alert("successful query");
+          setQueryResponse(
+            queryResponse.filter((val) => {
+              return val.recipeID !== ID;
+            })
+          );
+        } else alert("Failed query");
+      });
+    };
+  };
 
 
 
@@ -30,6 +70,9 @@ function IngredientsTable() {
                 type="text"
                 className="form-control"
                 placeholder="ingredientID"
+                onChange={(e) => {
+                  setIngredientID(e.target.value);
+                }}
               />
             </div>
             <div className="col">
@@ -38,12 +81,22 @@ function IngredientsTable() {
                 type="text"
                 className="form-control"
                 placeholder="ingredientName"
+                onChange={(e) => {
+                  setIngredientName(e.target.value);
+                }}
               />
             </div>
            
             <div className="col">
                 <label>new entry</label>
-                <button type="button" className="btn btn-primary" data-dismiss="modal">Add</button>
+                <button 
+                  type="button" 
+                  className="btn btn-primary" 
+                  data-dismiss="modal"
+                  onClick={insertIngredientQuery}
+                  >
+                    Add
+                  </button>
             </div>
            
            
@@ -66,8 +119,21 @@ function IngredientsTable() {
                   <tr>
                     <td>{ingredient.ingredientID}</td>
                     <td>{ingredient.ingredientName}</td>
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Update</button>
-                    <button type="button" className="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button 
+                      type="button" 
+                      className="btn btn-secondary" 
+                      data-dismiss="modal"
+                      >
+                        Update
+                    </button>
+                    <button 
+                      type="button" 
+                      className="btn btn-danger" 
+                      data-dismiss="modal"
+                      onClick={deleteQuery(ingredient.ingredientID)}
+                      >
+                        Delete
+                     </button>
                   </tr>
 
                 );
