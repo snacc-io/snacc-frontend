@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { api } from "../apiPath.js"
+import { api } from "../apiPath.js";
 
 function RecipesTable() {
   const [SQLQuery, setSQLQeury] = useState("");
@@ -23,7 +23,8 @@ function RecipesTable() {
   }, []);
 
   const insertRecipeQuery = () => {
-    Axios.post(`${api.url}/api/Recipes/Insert`, {
+    Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
+      // Axios.post(`${api.url}/api/Recipes/Insert`, {
       recipeID: recipeID,
       userID: userID,
       recipeName: recipeName,
@@ -43,11 +44,11 @@ function RecipesTable() {
             userID: userID,
             recipeName: recipeName,
             recipeDescription: recipeDescription,
-            instructions: instructions,
+            recipeInstructions: instructions,
             cookingTime: cookingTime,
             views: views,
             rating: rating,
-            imageURL: imageURL,
+            recipeImageURL: imageURL,
           },
         ]);
       } else alert("Failed query");
