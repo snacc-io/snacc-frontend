@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Axios from "axios"
-import { api } from "../config.js"
+import { api } from "../apiPath.js"
 
 
 
