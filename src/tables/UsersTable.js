@@ -46,7 +46,7 @@ function UsersTable() {
   const deleteQuery = (ID) => {
     return () => {
       Axios.post(`${api.url}/api/Users/Delete`, {
-        id: ID,
+        userID: ID,
       }).then((response) => {
         if (response) {
           alert("successful query");

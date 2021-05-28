@@ -43,7 +43,7 @@ function IngredientsTable() {
   const deleteQuery = (ID) => {
     return () => {
       Axios.post(`${api.url}/api/Ingredients/Delete`, {
-        id: ID,
+        ingredientID: ID,
       }).then((response) => {
         if (response) {
           alert("successful query");

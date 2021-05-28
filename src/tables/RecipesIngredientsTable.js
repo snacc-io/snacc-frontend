@@ -4,10 +4,6 @@ import { api } from "../apiPath.js"
 
 function RecipesIngredientsTable() {
   
-
-
-
-
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryResponse] = useState([]);
 
@@ -15,14 +11,14 @@ function RecipesIngredientsTable() {
   const [ingredientID, setIngredientID] = useState();
 
   useEffect(() => {
-      Axios.get(`${api.url}/api/RecipeIngredients`).then((response) => {
+      Axios.get(`${api.url}/api/RecipesIngredients`).then((response) => {
       setQueryResponse(response.data);
       console.log("Query succesfuly")
     });
   }, []);
 
   const insertRecipesIngredientsQUery = () => {
-    Axios.post(`${api.url}/api/RecipeIngredients/Insert`, {
+    Axios.post(`${api.url}/api/RecipesIngredients/Insert`, {
         recipeID: recipeID,
         ingredientID: ingredientID,
       }).then((response) => {
@@ -43,7 +39,7 @@ function RecipesIngredientsTable() {
 
   const deleteQuery = (ID) => {
     return () => {
-      Axios.post(`${api.url}/api/RecipeIngredients/Delete`, {
+      Axios.post(`${api.url}/api/RecipesIngredients/Delete`, {
         id: ID,
       }).then((response) => {
         if (response) {
