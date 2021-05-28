@@ -23,8 +23,8 @@ function RecipesTable() {
   }, []);
 
   const insertRecipeQuery = () => {
-    Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
-      // Axios.post(`${api.url}/api/Recipes/Insert`, {
+    // Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
+    Axios.post(`${api.url}/api/Recipes/Insert`, {
       recipeID: recipeID,
       userID: userID,
       recipeName: recipeName,
@@ -59,6 +59,7 @@ function RecipesTable() {
 
   const deleteQuery = (ID) => {
     return () => {
+      // Axios.post(`http://localhost:3001/api/Recipes/Delete`, {
       Axios.post(`${api.url}/api/Recipes/Delete`, {
         recipeID: ID,
       }).then((response) => {

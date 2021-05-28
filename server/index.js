@@ -97,7 +97,7 @@ app.post("/api/Ingredients/Delete", (req, res) => {
 
 app.post("/api/Recipes/Delete", (req, res) => {
   const SQLQuery = `DELETE FROM Recipes 
-  WHERE recipeID = ${req.body.id};`;
+  WHERE recipeID = ${req.body.recipeID};`;
 
   db.query(SQLQuery, (err, result) => {
     console.log(result);
