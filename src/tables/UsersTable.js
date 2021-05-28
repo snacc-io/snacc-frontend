@@ -6,7 +6,7 @@ function UsersTable() {
 
 
   const [SQLQuery, setSQLQeury] = useState("");
-  const [queryResponse, setQueryRespose] = useState([]);
+  const [queryResponse, setQueryResponse] = useState([]);
 
   const [userID, setUserID] = useState(0);
   const [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ function UsersTable() {
 
   useEffect(() => {
       Axios.get(`${api.url}/api/Users`).then((response) => {
-      setQueryRespose(response.data);
+      setQueryResponse(response.data);
     });
   }, []);
 

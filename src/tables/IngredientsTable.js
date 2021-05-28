@@ -8,14 +8,14 @@ function IngredientsTable() {
 
 
   const [SQLQuery, setSQLQeury] = useState("");
-  const [queryResponse, setQueryRespose] = useState([]);
+  const [queryResponse, setQueryResponse] = useState([]);
 
   const [ingredientID, setIngredientID] = useState(0);
   const [ingredientName, setIngredientName] = useState("");
 
   useEffect(() => {
       Axios.get(`${api.url}/api/Ingredients`).then((response) => {
-      setQueryRespose(response.data);
+      setQueryResponse(response.data);
     });
   }, []);
 

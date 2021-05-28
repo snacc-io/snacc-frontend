@@ -18,14 +18,12 @@ function RecipesTable() {
 
   useEffect(() => {
     Axios.get(`${api.url}/api/Recipes`).then((response) => {
-    // Axios.get(`http://localhost:3001/api/Recipes`).then((response) => {
       setQueryResponse(response.data);
     });
   }, []);
 
   const insertRecipeQuery = () => {
     Axios.post(`${api.url}/api/Recipes/Insert`, {
-    // Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
       recipeID: recipeID,
       userID: userID,
       recipeName: recipeName,

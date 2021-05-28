@@ -6,7 +6,7 @@ function ReviewsTable() {
 
 
   const [SQLQuery, setSQLQeury] = useState("");
-  const [queryResponse, setQueryRespose] = useState([]);
+  const [queryResponse, setQueryResponse] = useState([]);
 
   const [reviewID, setReviewID] = useState(0);
   const [userID, setUserID] = useState(0);
@@ -17,7 +17,7 @@ function ReviewsTable() {
 
   useEffect(() => {
       Axios.get(`${api.url}/api/Reviews`).then((response) => {
-      setQueryRespose(response.data);
+      setQueryResponse(response.data);
     });
   }, []);
 

@@ -9,14 +9,14 @@ function RecipesIngredientsTable() {
 
 
   const [SQLQuery, setSQLQeury] = useState("");
-  const [queryResponse, setQueryRespose] = useState([]);
+  const [queryResponse, setQueryResponse] = useState([]);
 
   const [recipeID, setRecipeID] = useState(0);
   const [ingredientID, setIngredientID] = useState();
 
   useEffect(() => {
       Axios.get(`${api.url}/api/RecipeIngredients`).then((response) => {
-      setQueryRespose(response.data);
+      setQueryResponse(response.data);
       console.log("Query succesfuly")
     });
   }, []);
