@@ -54,23 +54,6 @@ function RecipesTable() {
     });
   };
 
-  const manualUpdate = (query, target, data) => {
-    query.forEach((element) => {
-      return () => {
-        if (element.recipeID === target) {
-          element.recipeName = data.recipeName;
-          element.recipeDescription = data.recipeDescription;
-          element.recipeInstructions = data.recipeInstructions;
-          element.cookingTime = data.cookingTime;
-          element.views = data.views;
-          element.rating = data.rating;
-          element.recipeImageURL = data.recipeImageURL;
-          element.userID = data.userID;
-        }
-      };
-    });
-  };
-
   const updateQuery = (ID) => {
     const data = {
       recipeName: recipeName,
@@ -87,16 +70,13 @@ function RecipesTable() {
       Axios.post(`${api.url}/api/Recipes/Update`, data).then((response) => {
         if (response.data.affectedRows) {
           alert("successful query");
-          console.log("BEFORE:");
-          console.log(queryResponse);
           setQueryResponse([
             ...queryResponse.filter((val) => {
               return val.recipeID !== ID;
             }),
             data,
           ]);
-          console.log("AFTER:");
-          console.log(queryResponse);
+          document.getElementsByName("recipeID")[0].value = ID;
         } else alert("Failed query");
       });
     };
