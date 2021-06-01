@@ -73,6 +73,7 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="userID"
+                name="userID"
                 onChange={(e) => {
                   setUserID(e.target.value);
                 }}
@@ -84,6 +85,7 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="username"
+                name="username"
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
@@ -96,6 +98,7 @@ function UsersTable() {
                 type="text"
                 className="form-control"
                 placeholder="email"
+                name="email"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}

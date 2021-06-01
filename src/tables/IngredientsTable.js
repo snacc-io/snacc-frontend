@@ -70,6 +70,7 @@ function IngredientsTable() {
                 type="text"
                 className="form-control"
                 placeholder="ingredientID"
+                name="ingredientID"
                 onChange={(e) => {
                   setIngredientID(e.target.value);
                 }}
@@ -81,6 +82,7 @@ function IngredientsTable() {
                 type="text"
                 className="form-control"
                 placeholder="ingredientName"
+                name="ingredientName"
                 onChange={(e) => {
                   setIngredientName(e.target.value);
                 }}
