@@ -179,7 +179,7 @@ function ReviewsTable() {
               </tr>
             </thead>
             <tbody>
-  `            {queryResponse.map((review) => {
+              {queryResponse.map((review) => {
                   return (
                     <tr>
                       <td>{review.reviewID}</td>
@@ -206,7 +206,7 @@ function ReviewsTable() {
                     </tr>
 
                   );
-                })}`
+                })}
               
             </tbody>
           </table>

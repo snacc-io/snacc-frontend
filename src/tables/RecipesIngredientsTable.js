@@ -17,7 +17,7 @@ function RecipesIngredientsTable() {
     });
   }, []);
 
-  const insertRecipesIngredientsQUery = () => {
+  const insertRecipesIngredientsQuery = () => {
     Axios.post(`${api.url}/api/RecipesIngredients/Insert`, {
         recipeID: recipeID,
         ingredientID: ingredientID,
@@ -69,7 +69,7 @@ function RecipesIngredientsTable() {
               placeholder="recipeID"
               name="recipeID"
               onChange={(e) => {
-                setRecipeID(e.targetValue);
+                setRecipeID(e.target.value);
               }}
             />
           </div>
@@ -92,7 +92,7 @@ function RecipesIngredientsTable() {
               <button type="button" 
               className="btn btn-primary" 
               data-dismiss="modal"
-              onClick={insertRecipesIngredientsQUery}
+              onClick={insertRecipesIngredientsQuery}
               >
                 Add
               </button>
