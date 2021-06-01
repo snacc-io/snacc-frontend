@@ -23,7 +23,6 @@ function RecipesTable() {
   }, []);
 
   const insertRecipeQuery = () => {
-    // Axios.post(`http://localhost:3001/api/Recipes/Insert`, {
     Axios.post(`${api.url}/api/Recipes/Insert`, {
       recipeID: recipeID,
       userID: userID,
@@ -55,14 +54,60 @@ function RecipesTable() {
     });
   };
 
-  const updateQuery = (ID) => {};
+  const manualUpdate = (query, target, data) => {
+    query.forEach((element) => {
+      return () => {
+        if (element.recipeID === target) {
+          element.recipeName = data.recipeName;
+          element.recipeDescription = data.recipeDescription;
+          element.recipeInstructions = data.recipeInstructions;
+          element.cookingTime = data.cookingTime;
+          element.views = data.views;
+          element.rating = data.rating;
+          element.recipeImageURL = data.recipeImageURL;
+          element.userID = data.userID;
+        }
+      };
+    });
+  };
+
+  const updateQuery = (ID) => {
+    const data = {
+      recipeName: recipeName,
+      recipeDescription: recipeDescription,
+      recipeInstructions: instructions,
+      cookingTime: cookingTime,
+      views: views,
+      rating: rating,
+      recipeImageURL: imageURL,
+      userID: userID,
+      recipeID: ID,
+    };
+    return () => {
+      Axios.post(`${api.url}/api/Recipes/Update`, data).then((response) => {
+        if (response.data.affectedRows) {
+          alert("successful query");
+          console.log("BEFORE:");
+          console.log(queryResponse);
+          setQueryResponse([
+            ...queryResponse.filter((val) => {
+              return val.recipeID !== ID;
+            }),
+            data,
+          ]);
+          console.log("AFTER:");
+          console.log(queryResponse);
+        } else alert("Failed query");
+      });
+    };
+  };
 
   const deleteQuery = (ID) => {
     return () => {
-      // Axios.post(`http://localhost:3001/api/Recipes/Delete`, {
       Axios.post(`${api.url}/api/Recipes/Delete`, {
         recipeID: ID,
       }).then((response) => {
+        console.log("DELETE QUERY: \n" + response);
         if (response) {
           alert("successful query");
           setQueryResponse(
@@ -74,7 +119,6 @@ function RecipesTable() {
       });
     };
   };
-
   return (
     <div className="home__container">
       <div className="container my-5">
@@ -244,6 +288,7 @@ function RecipesTable() {
                     className="btn btn-secondary"
                     data-dismiss="modal"
                     name={`Update${recipe.recipeID}`}
+                    onClick={updateQuery(recipe.recipeID)}
                   >
                     Update
                   </button>
