@@ -110,6 +110,7 @@ function ReviewsTable() {
                 type="text"
                 className="form-control"
                 placeholder="userID"
+                name="userID"
                 onChange={(e) => {
                   setUserID(e.target.value);
                 }}
@@ -122,6 +123,7 @@ function ReviewsTable() {
                 type="text"
                 className="form-control"
                 placeholder="recipeID"
+                name="recipeID"
                 onChange={(e) => {
                   setRecipeID(e.target.value);
                 }}
@@ -134,6 +136,7 @@ function ReviewsTable() {
                 type="text"
                 className="form-control"
                 placeholder="rating"
+                name="rating"
                 onChange={(e) => {
                   setRating(e.target.value);
                 }}
@@ -146,6 +149,7 @@ function ReviewsTable() {
                 type="text"
                 className="form-control"
                 placeholder="comment"
+                name="comment"
                 name="comment"
                 onChange={(e) => {
                   setComment(e.target.value);
