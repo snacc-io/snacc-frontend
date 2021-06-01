@@ -54,23 +54,6 @@ function RecipesTable() {
     });
   };
 
-  const manualUpdate = (query, target, data) => {
-    query.forEach((element) => {
-      return () => {
-        if (element.recipeID === target) {
-          element.recipeName = data.recipeName;
-          element.recipeDescription = data.recipeDescription;
-          element.recipeInstructions = data.recipeInstructions;
-          element.cookingTime = data.cookingTime;
-          element.views = data.views;
-          element.rating = data.rating;
-          element.recipeImageURL = data.recipeImageURL;
-          element.userID = data.userID;
-        }
-      };
-    });
-  };
-
   const updateQuery = (ID) => {
     const data = {
       recipeName: recipeName,
