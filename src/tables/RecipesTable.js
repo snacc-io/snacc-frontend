@@ -76,6 +76,7 @@ function RecipesTable() {
             }),
             data,
           ]);
+          document.getElementsByName("recipeID")[0].value = ID;
         } else alert("Failed query");
       });
     };
