@@ -94,6 +94,7 @@ function RecipesIngredientsTable() {
                   setRecipeID(e.target.value);
                   }}
               >
+                    <option value="" disabled selected hidden>Select</option>
                       {recipeList.map((recipe) => {
                     return (
                       
@@ -114,6 +115,7 @@ function RecipesIngredientsTable() {
                   setIngredientID(e.target.value);
                   }}
               >
+                    <option value="" disabled selected hidden>Select</option>
                       {ingredientList.map((ingredient) => {
                     return (
                       <option value={ingredient.ingredientID}>

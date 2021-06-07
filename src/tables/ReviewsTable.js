@@ -129,6 +129,7 @@ function ReviewsTable() {
                     setUserID(e.target.value);
                     }}
                 >
+                      <option value="" disabled selected hidden>select</option>
                         {userList.map((user) => {
                       return (
                         
@@ -148,6 +149,7 @@ function ReviewsTable() {
                     setRecipeID(e.target.value);
                     }}
                 >
+                      <option value="" disabled selected hidden>select</option>
                         {recipeList.map((recipe) => {
                       return (
                         
@@ -180,7 +182,7 @@ function ReviewsTable() {
               <td><input
                 type="text"
                 className="form-control"
-                placeholder="some url to an image"
+                placeholder="url for image"
                 name="imageURL"
                 onChange={(e) => {
                   setImageURL(e.target.value);

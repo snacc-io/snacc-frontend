@@ -134,6 +134,7 @@ function RecipesTable() {
                   setUserID(e.target.value);
                 }}
               >
+                    <option value="" disabled selected hidden>Select</option>
                       {userList.map((user) => {
                         console.log("Returning userlist map")
                     return (
