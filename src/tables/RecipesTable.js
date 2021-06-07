@@ -97,7 +97,7 @@ function RecipesTable() {
   return (
   <div className="home__container">
   <form>
-  <div className="container table-responsive home__container my-5">
+  <div className=" table-responsive home__container my-5">
   <table className="table ">
       <thead>
       <tr>
