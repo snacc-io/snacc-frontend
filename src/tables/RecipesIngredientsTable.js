@@ -151,13 +151,7 @@ function RecipesIngredientsTable() {
                       <tr>
                         <td>{recipe_ingredient.recipeID}</td>
                         <td>{recipe_ingredient.ingredientID}</td>
-                        <button 
-                          type="button" 
-                          className="btn btn-secondary" 
-                          data-dismiss="modal"
-                        >
-                          Update
-                        </button>
+
                         <button 
                           type="button" 
                           className="btn btn-danger" 
