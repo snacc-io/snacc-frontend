@@ -109,13 +109,27 @@ function RecipesTable() {
     };
   };
   return (
-    <div className="home__container">
-      <div className="container my-5">
-        <form>
-          <div className="form-row">
-            <div className="col">
-              <label>recipeID</label>
-              <input
+  <div className="home__container">
+  <form>
+  <div className="container table-responsive home__container my-5">
+  <table className="table ">
+      <thead>
+      <tr>
+          <th>recipeID</th>
+          <th>userID</th>
+          <th>recipeName</th>
+          <th>recipeDescription</th>
+          <th>instructions</th>
+          <th>cookingTime</th>
+          <th>views</th>
+          <th>rating</th>
+          <th>image URL</th>
+          <th>new entry</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <td><input
                 type="text"
                 className="form-control"
                 placeholder="recipeID"
@@ -123,11 +137,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setRecipeID(e.target.value);
                 }}
-              />
-            </div>
-            <div className="col">
-            <label>userID</label>
-              <select
+              /></td>
+          <td><select
                 type="text"
                 className="form-control"
                 name="userID"
@@ -146,12 +157,8 @@ function RecipesTable() {
                       </option>
                     );
                   })}
-              </select>
-            </div>
-
-            <div className="col">
-              <label>recipeName</label>
-              <input
+              </select></td>
+          <td><input
                 type="text"
                 className="form-control"
                 placeholder="recipeName"
@@ -159,12 +166,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setRecipeName(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>recipeDescription</label>
-              <input
+              /></td>
+          <td> <input
                 type="text"
                 className="form-control"
                 placeholder="recipeDescription"
@@ -172,12 +175,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setRecipeDescription(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>instructions</label>
-              <input
+              /></td>
+          <td><input
                 type="text"
                 className="form-control"
                 placeholder="instructions"
@@ -185,12 +184,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setInstructions(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>cookingTime</label>
-              <input
+              /></td>
+          <td> <input
                 type="text"
                 className="form-control"
                 placeholder="cookingTime"
@@ -198,12 +193,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setCookingTime(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>views</label>
-              <input
+              /></td>
+          <td><input
                 type="text"
                 className="form-control"
                 placeholder="views"
@@ -211,12 +202,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setViews(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>rating</label>
-              <input
+              /></td>
+          <td> <input
                 type="text"
                 className="form-control"
                 placeholder="rating"
@@ -224,12 +211,8 @@ function RecipesTable() {
                 onChange={(e) => {
                   setRating(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>image URL</label>
-              <input
+              /></td>
+          <td> <input
                 type="text"
                 className="form-control"
                 placeholder="image URL"
@@ -237,25 +220,22 @@ function RecipesTable() {
                 onChange={(e) => {
                   setImageURL(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>new entry </label>
-              <button
+              /></td>
+          <td> <button
                 type="button"
                 className="btn btn-primary"
                 data-dismiss="modal"
                 onClick={insertRecipeQuery}
               >
                 Add
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+              </button></td>
+      </tr>
+      </tbody>
+  </table>
+  </div>
+  </form>  
 
-      <div class="container table-responsive home__container my-5">
+      <div class=" table-responsive  my-5">
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -293,6 +273,8 @@ function RecipesTable() {
                   >
                     Update
                   </button>
+                  </td>
+                  <td>
                   <button
                     type="button"
                     className="btn btn-danger"

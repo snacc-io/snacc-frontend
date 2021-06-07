@@ -63,13 +63,21 @@ function UsersTable() {
 
 
     return (
-        <div className="home__container">
-        <div className="container my-5">
-        <form>
-          <div className="form-row">
-            <div className="col">
-              <label>userID</label>
-              <input
+  <div className="home__container">
+  <form>
+    <div className="container table-responsive home__container my-5">
+    <table className="table ">
+        <thead>
+        <tr>
+            <th>userID</th>
+            <th>username</th>
+            <th>email</th>
+            <th>new entry</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input
                 type="text"
                 className="form-control"
                 placeholder="userID"
@@ -77,11 +85,8 @@ function UsersTable() {
                 onChange={(e) => {
                   setUserID(e.target.value);
                 }}
-              />
-            </div>
-            <div className="col">
-              <label>username</label>
-              <input
+              /></td>
+            <td><input
                 type="text"
                 className="form-control"
                 placeholder="username"
@@ -89,12 +94,8 @@ function UsersTable() {
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
-              />
-            </div>
-           
-            <div className="col">
-              <label>email</label>
-              <input
+              /></td>
+            <td><input
                 type="text"
                 className="form-control"
                 placeholder="email"
@@ -102,26 +103,23 @@ function UsersTable() {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-              />
-            </div>
-           
-            <div className="col">
-                <label>new entry </label>
-                <button 
+              /></td>
+            <td><button 
                   type="button" 
                   className="btn btn-primary" 
                   data-dismiss="modal"
                   onClick={insertUserQuery}
                   >
                     Add
-                  </button>
-            </div>
-           
-           
-            
-          </div>
-        </form>
-        </div>
+                  </button></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+  </form>
+
+
+     
   
         <div class="container table-responsive home__container my-5">
           <table class="table table-bordered">

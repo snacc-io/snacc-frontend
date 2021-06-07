@@ -72,82 +72,71 @@ function RecipesIngredientsTable() {
     return (
         <div>
       <div className="home__container">
-      <div className="container my-5">
+     
       <form>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-        <div className="form-row">
-        <div className="col">
-          <label>recipeID</label>
-            <select
-                type="text"
-                className="form-control"
-                name="recipeID"
-                placeholder="Select a recipe"
-                onChange={(e) => {
-                setRecipeID(e.target.value);
-                }}
-            >
-                    {recipeList.map((recipe) => {
-                  return (
-                    
-                    <option value={recipe.recipeID}>
-                      {recipe.recipeID} : {recipe.recipeName}
-
-                    </option>
-                  );
-                })}
-            </select>
-        </div>
-        <div className="col">
-          <label>ingredientID</label>
-            <select
-                type="text"
-                className="form-control"
-                name="ingredientID"
-                placeholder="Select an ingredient"
-                onChange={(e) => {
-                setIngredientID(e.target.value);
-                }}
-            >
-                    {ingredientList.map((ingredient) => {
-                  return (
-                    <option value={ingredient.ingredientID}>
-                      {ingredient.ingredientID} : {ingredient.ingredientName}
-                    </option>
-                  );
-                })}
-            </select>
-        </div>
-         
-          
-          <div className="col">
-              <label>new entry </label>
-              <button type="button" 
-              className="btn btn-primary" 
-              data-dismiss="modal"
-              onClick={insertRecipesIngredientsQuery}
+      <div className="container table-responsive home__container my-5">
+        <table className="table ">
+          <thead>
+            <tr>
+              <th>recipeID</th>
+              <th>ingredientID</th>
+              <th>new entry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>          
+              <select
+                  type="text"
+                  className="form-control"
+                  name="recipeID"
+                  placeholder="Select a recipe"
+                  onChange={(e) => {
+                  setRecipeID(e.target.value);
+                  }}
               >
-                Add
-              </button>
+                      {recipeList.map((recipe) => {
+                    return (
+                      
+                      <option value={recipe.recipeID}>
+                        {recipe.recipeID} : {recipe.recipeName}
+
+                      </option>
+                    );
+                  })}
+              </select></td>
+              <td> 
+              <select
+                  type="text"
+                  className="form-control"
+                  name="ingredientID"
+                  placeholder="Select an ingredient"
+                  onChange={(e) => {
+                  setIngredientID(e.target.value);
+                  }}
+              >
+                      {ingredientList.map((ingredient) => {
+                    return (
+                      <option value={ingredient.ingredientID}>
+                        {ingredient.ingredientID} : {ingredient.ingredientName}
+                      </option>
+                    );
+                  })}
+              </select></td>
+              <td> 
+                <button type="button" 
+                className="btn btn-primary" 
+                data-dismiss="modal"
+                onClick={insertRecipesIngredientsQuery}
+                >
+                  Add
+                </button></td>
+            </tr>
+          </tbody>
+          </table>
           </div>
-         
-         
-          
-        </div>
       </form>
-      </div>
+      
 
       <div className="container table-responsive home__container my-5">
         <table className="table table-bordered">
@@ -163,18 +152,19 @@ function RecipesIngredientsTable() {
                       <tr>
                         <td>{recipe_ingredient.recipeID}</td>
                         <td>{recipe_ingredient.ingredientID}</td>
+                        <td>
+                          <button 
+                            type="button" 
+                            className="btn btn-danger" 
+                            data-dismiss="modal"
+                            onClick={deleteQuery(
+                              recipe_ingredient
 
-                        <button 
-                          type="button" 
-                          className="btn btn-danger" 
-                          data-dismiss="modal"
-                          onClick={deleteQuery(
-                            recipe_ingredient
-
-                          )} 
-                        >
-                          Delete
-                       </button>
+                            )} 
+                          >
+                            Delete
+                        </button>
+                       </td>
                       </tr>
 
                     );

@@ -22,7 +22,7 @@ function Header() {
 
   <header>
     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a className="navbar-brand" href="#">Snacc.io</a>
+      <a className="navbar-brand" href="/">Snacc.io</a>
       <div className="header__search">
         <input className="header__searchInput" placeholder="Search for a recipe" type="text" />
         <SearchIcon className="header__searchIcon" />
@@ -36,11 +36,18 @@ function Header() {
         </ul>
       </div>
       <div className="header__nav">
-        <Link to={!user && '/login'}>
+      <Link className="navbar-brand" to="/RecipesIngredientsTable">RecipesIngredients</Link>
+      <Link className="navbar-brand" to="/UsersTable">Users</Link>
+      <Link className="navbar-brand" to="/RecipesTable">Recipes</Link>
+      <Link className="navbar-brand" to="/IngredientsTable">Ingredients</Link>
+      <Link className="navbar-brand" to="/ReviewsTable">Reviews</Link>
+
+      <Link className="navbar-brand" to="/index">Index</Link>
+        {/* <Link to={!user && '/login'}>
           <div  onClick={handleAuthenticaton} className="header__option">
             <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
-        </Link>        
+        </Link>         */}
 
 
       </div>

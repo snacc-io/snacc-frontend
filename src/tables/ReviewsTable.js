@@ -104,13 +104,24 @@ function ReviewsTable() {
   };
 
   return (
-    <div className="home__container">
-      <div className="container my-5">
-        <form>
-          <div className="form-row">
-            <div className="col">
-              <label>reviewID</label>
-              <input
+  <div className="home__container">
+    <form>
+      <div className="container table-responsive home__container my-5">
+      <table className="table ">
+          <thead>
+          <tr>
+              <th>reviewID</th>
+              <th>userID</th>
+              <th>recipeID</th>
+              <th>rating</th>
+              <th>comment</th>
+              <th>imageURL</th>
+              <th>new entry</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td><input
                 type="text"
                 className="form-control"
                 placeholder="reviewID"
@@ -118,11 +129,8 @@ function ReviewsTable() {
                 onChange={(e) => {
                   setReviewID(e.target.value);
                 }}
-              />
-            </div>
-            <div className="col">
-              <label>userID</label>
-                <select
+              /></td>
+              <td><select
                     type="text"
                     className="form-control"
                     placeholder="Select a user"
@@ -140,12 +148,8 @@ function ReviewsTable() {
                         </option>
                       );
                     })}
-                </select>
-            </div>
-
-            <div className="col">
-              <label>recipeID</label>
-                <select
+                </select></td>
+              <td><select
                     type="text"
                     className="form-control"
                     name="recipeID"
@@ -163,12 +167,8 @@ function ReviewsTable() {
                         </option>
                       );
                     })}
-                </select>
-            </div>
-
-            <div className="col">
-              <label>rating</label>
-              <input
+                </select></td>
+              <td><input
                 type="text"
                 className="form-control"
                 placeholder="rating"
@@ -176,12 +176,8 @@ function ReviewsTable() {
                 onChange={(e) => {
                   setRating(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>comment</label>
-              <input
+              /></td>
+              <td> <input
                 type="text"
                 className="form-control"
                 placeholder="comment"
@@ -190,12 +186,8 @@ function ReviewsTable() {
                 onChange={(e) => {
                   setComment(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>imageURL</label>
-              <input
+              /></td>
+              <td><input
                 type="text"
                 className="form-control"
                 placeholder="some url to an image"
@@ -203,23 +195,20 @@ function ReviewsTable() {
                 onChange={(e) => {
                   setImageURL(e.target.value);
                 }}
-              />
-            </div>
-
-            <div className="col">
-              <label>new entry</label>
-              <button
+              /></td>
+              <td> <button
                 type="button"
                 className="btn btn-primary"
                 data-dismiss="modal"
                 onClick={insertReviewQuery}
               >
                 Add
-              </button>
-            </div>
-          </div>
-        </form>
+              </button></td>
+          </tr>
+          </tbody>
+      </table>
       </div>
+    </form>
 
       <div class="container table-responsive home__container my-5">
         <table class="table table-bordered">
