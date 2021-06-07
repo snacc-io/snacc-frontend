@@ -121,6 +121,7 @@ function IngredientsTable() {
                   <tr>
                     <td>{ingredient.ingredientID}</td>
                     <td>{ingredient.ingredientName}</td>
+                    <td>
                     <button 
                       type="button" 
                       className="btn btn-secondary" 
@@ -128,6 +129,8 @@ function IngredientsTable() {
                       >
                         Update
                     </button>
+                    
+                    
                     <button 
                       type="button" 
                       className="btn btn-danger" 
@@ -136,6 +139,8 @@ function IngredientsTable() {
                       >
                         Delete
                      </button>
+                     </td>
+                     
                   </tr>
 
                 );

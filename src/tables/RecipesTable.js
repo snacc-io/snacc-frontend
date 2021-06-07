@@ -283,6 +283,7 @@ function RecipesTable() {
                   <td>{recipe.views}</td>
                   <td>{recipe.rating}</td>
                   <td>{recipe.recipeImageURL}</td>
+                  <td>
                   <button
                     type="button"
                     className="btn btn-secondary"
@@ -301,6 +302,7 @@ function RecipesTable() {
                   >
                     Delete
                   </button>
+                  </td>
                 </tr>
               );
             })}

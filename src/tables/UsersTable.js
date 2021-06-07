@@ -140,6 +140,7 @@ function UsersTable() {
                     <td>{user.userID}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
+                    <td>
                     <button 
                     type="button" 
                     className="btn btn-secondary" 
@@ -155,6 +156,7 @@ function UsersTable() {
                       >
                         Delete
                      </button>
+                     </td>
                   </tr>
 
                 );

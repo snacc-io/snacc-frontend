@@ -207,7 +207,7 @@ function ReviewsTable() {
             </div>
 
             <div className="col">
-              <label> </label>
+              <label>new entry</label>
               <button
                 type="button"
                 className="btn btn-primary"

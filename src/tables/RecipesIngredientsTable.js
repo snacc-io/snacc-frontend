@@ -49,7 +49,6 @@ function RecipesIngredientsTable() {
       });
   }
 
-  const updateQuery = (ID) => {};
 
   const deleteQuery = (ID) => {
     return () => {
@@ -75,6 +74,19 @@ function RecipesIngredientsTable() {
       <div className="home__container">
       <div className="container my-5">
       <form>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
         <div className="form-row">
         <div className="col">
           <label>recipeID</label>
