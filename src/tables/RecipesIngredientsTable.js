@@ -15,7 +15,6 @@ function RecipesIngredientsTable() {
   useEffect(() => {
       Axios.get(`${api.url}/api/RecipesIngredients`).then((response) => {
       setQueryResponse(response.data);
-      console.log("Query succesfuly")
     });
   }, []);
 
