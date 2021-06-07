@@ -6,6 +6,8 @@ function RecipesIngredientsTable() {
   
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryResponse] = useState([]);
+  const [recipeList, setRecipeList] = useState([]);
+  const [ingredientList, setIngredientList] = useState([]);
 
   const [recipeID, setRecipeID] = useState(0);
   const [ingredientID, setIngredientID] = useState();
@@ -14,6 +16,18 @@ function RecipesIngredientsTable() {
       Axios.get(`${api.url}/api/RecipesIngredients`).then((response) => {
       setQueryResponse(response.data);
       console.log("Query succesfuly")
+    });
+  }, []);
+
+  useEffect(() => {
+    Axios.get(`${api.url}/api/Recipes`).then((response) => {
+      setRecipeList(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    Axios.get(`${api.url}/api/Ingredients`).then((response) => {
+      setIngredientList(response.data);
     });
   }, []);
 
@@ -61,30 +75,46 @@ function RecipesIngredientsTable() {
       <div className="container my-5">
       <form>
         <div className="form-row">
-          <div className="col">
-            <label>recipeID</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="recipeID"
-              name="recipeID"
-              onChange={(e) => {
+        <div className="col">
+          <label>recipeID</label>
+            <select
+                type="text"
+                className="form-control"
+                name="recipeID"
+                onChange={(e) => {
                 setRecipeID(e.target.value);
-              }}
-            />
-          </div>
-          <div className="col">
-            <label>ingredientID</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="ingredientID"
-              name="ingredientID"
-              onChange={(e) => {
+                }}
+            >
+                    {recipeList.map((recipe) => {
+                  return (
+                    
+                    <option value={recipe.recipeID}>
+                      {recipe.recipeID} : {recipe.recipeName}
+
+                    </option>
+                  );
+                })}
+            </select>
+        </div>
+        <div className="col">
+          <label>ingredientID</label>
+            <select
+                type="text"
+                className="form-control"
+                name="ingredientID"
+                onChange={(e) => {
                 setIngredientID(e.target.value);
-              }}
-            />
-          </div>
+                }}
+            >
+                    {ingredientList.map((ingredient) => {
+                  return (
+                    <option value={ingredient.ingredientID}>
+                      {ingredient.ingredientID} : {ingredient.ingredientName}
+                    </option>
+                  );
+                })}
+            </select>
+        </div>
          
           
           <div className="col">

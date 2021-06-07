@@ -5,6 +5,7 @@ import { api } from "../apiPath.js";
 function RecipesTable() {
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryResponse] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const [recipeID, setRecipeID] = useState(0);
   const [userID, setUserID] = useState(0);
@@ -21,6 +22,14 @@ function RecipesTable() {
       setQueryResponse(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    Axios.get(`${api.url}/api/Users`).then((response) => {
+      setUserList(response.data);
+    });
+  }, []);
+
+
 
   const insertRecipeQuery = () => {
     Axios.post(`${api.url}/api/Recipes/Insert`, {
@@ -117,16 +126,26 @@ function RecipesTable() {
               />
             </div>
             <div className="col">
-              <label>userID</label>
-              <input
+            <label>userID</label>
+              <select
                 type="text"
                 className="form-control"
-                placeholder="userID"
                 name="userID"
                 onChange={(e) => {
                   setUserID(e.target.value);
                 }}
-              />
+              >
+                      {userList.map((user) => {
+                        console.log("Returning userlist map")
+                    return (
+                      
+                      <option value={user.userID}>
+                        {user.userID} : {user.username}
+
+                      </option>
+                    );
+                  })}
+              </select>
             </div>
 
             <div className="col">

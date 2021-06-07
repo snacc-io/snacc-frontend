@@ -7,6 +7,8 @@ function ReviewsTable() {
 
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryResponse] = useState([]);
+  const [userList, setUserList] = useState([]);
+  const [recipeList, setRecipeList] = useState([]);
 
   const [reviewID, setReviewID] = useState(0);
   const [userID, setUserID] = useState(0);
@@ -18,6 +20,18 @@ function ReviewsTable() {
   useEffect(() => {
       Axios.get(`${api.url}/api/Reviews`).then((response) => {
       setQueryResponse(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    Axios.get(`${api.url}/api/Users`).then((response) => {
+      setUserList(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    Axios.get(`${api.url}/api/Recipes`).then((response) => {
+      setRecipeList(response.data);
     });
   }, []);
 
@@ -89,28 +103,46 @@ function ReviewsTable() {
             </div>
             <div className="col">
               <label>userID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="userID"
-                name="userID"
-                onChange={(e) => {
-                  setUserID(e.target.value);
-                }}
-              />
+                <select
+                    type="text"
+                    className="form-control"
+                    name="userID"
+                    onChange={(e) => {
+                    setUserID(e.target.value);
+                    }}
+                >
+                        {userList.map((user) => {
+                      return (
+                        
+                        <option value={user.userID}>
+                          {user.userID} : {user.username}
+
+                        </option>
+                      );
+                    })}
+                </select>
             </div>
            
             <div className="col">
               <label>recipeID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="recipeID"
-                name="recipeID"
-                onChange={(e) => {
-                  setRecipeID(e.target.value);
-                }}
-              />
+                <select
+                    type="text"
+                    className="form-control"
+                    name="recipeID"
+                    onChange={(e) => {
+                    setRecipeID(e.target.value);
+                    }}
+                >
+                        {recipeList.map((recipe) => {
+                      return (
+                        
+                        <option value={recipe.recipeID}>
+                          {recipe.recipeID} : {recipe.recipeName}
+
+                        </option>
+                      );
+                    })}
+                </select>
             </div>
            
             <div className="col">
