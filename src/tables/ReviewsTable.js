@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import Axios from "axios"
-import { api } from "../apiPath.js"
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { api } from "../apiPath.js";
 
 function ReviewsTable() {
-
-
   const [SQLQuery, setSQLQeury] = useState("");
   const [queryResponse, setQueryResponse] = useState([]);
   const [userList, setUserList] = useState([]);
@@ -18,7 +16,7 @@ function ReviewsTable() {
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
-      Axios.get(`${api.url}/api/Reviews`).then((response) => {
+    Axios.get(`${api.url}/api/Reviews`).then((response) => {
       setQueryResponse(response.data);
     });
   }, []);
@@ -63,7 +61,30 @@ function ReviewsTable() {
     });
   };
 
-  const updateQuery = (ID) => {};
+  const updateQuery = (ID) => {
+    const data = {
+      userID: userID,
+      recipeID: recipeID,
+      rating: rating,
+      comment: comment,
+      imageURL: imageURL,
+      reviewID: ID,
+    };
+    return () => {
+      Axios.post(`${api.url}/api/Reviews/Update`, data).then((response) => {
+        if (response.data.affectedRows) {
+          alert("successful query");
+          setQueryResponse([
+            ...queryResponse.filter((val) => {
+              return val.reviewID !== ID;
+            }),
+            data,
+          ]);
+          document.getElementsByName("reviewID")[0].value = ID;
+        } else alert("Failed query");
+      });
+    };
+  };
 
   const deleteQuery = (ID) => {
     return () => {
@@ -82,11 +103,9 @@ function ReviewsTable() {
     };
   };
 
-
-
-    return (
-        <div className="home__container">
-        <div className="container my-5">
+  return (
+    <div className="home__container">
+      <div className="container my-5">
         <form>
           <div className="form-row">
             <div className="col">
@@ -122,7 +141,7 @@ function ReviewsTable() {
                     })}
                 </select>
             </div>
-           
+
             <div className="col">
               <label>recipeID</label>
                 <select
@@ -144,7 +163,7 @@ function ReviewsTable() {
                     })}
                 </select>
             </div>
-           
+
             <div className="col">
               <label>rating</label>
               <input
@@ -184,72 +203,68 @@ function ReviewsTable() {
                 }}
               />
             </div>
-           
+
             <div className="col">
-                <label> </label>
-                <button 
-                  type="button" 
-                  className="btn btn-primary" 
-                  data-dismiss="modal"
-                  onClick={insertReviewQuery}
-                  >
-                    Add
-                 </button>
+              <label> </label>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-dismiss="modal"
+                onClick={insertReviewQuery}
+              >
+                Add
+              </button>
             </div>
-           
-           
-            
           </div>
         </form>
-        </div>
-  
-        <div class="container table-responsive home__container my-5">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>reviewID</th>
-                <th>userID</th>
-                <th>recipeID</th>
-                <th>rating</th>
-                <th>comment</th>
-                <th>imageURL</th>
-              </tr>
-            </thead>
-            <tbody>
-              {queryResponse.map((review) => {
-                  return (
-                    <tr>
-                      <td>{review.reviewID}</td>
-                      <td>{review.userID}</td>
-                      <td>{review.recipeID}</td>
-                      <td>{review.rating}</td>
-                      <td>{review.comment}</td>
-                      <td>{review.imageURL}</td>
-                      <button 
-                        type="button" 
-                        className="btn btn-secondary" 
-                        data-dismiss="modal"
-                        >
-                          Update
-                       </button>
-                      <button 
-                        type="button" 
-                        className="btn btn-danger" 
-                        data-dismiss="modal"
-                        onClick={deleteQuery(review.reviewID)}
-                        >
-                          Delete
-                       </button>
-                    </tr>
-
-                  );
-                })}
-              
-            </tbody>
-          </table>
-        </div>
       </div>
-    )
+
+      <div class="container table-responsive home__container my-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>reviewID</th>
+              <th>userID</th>
+              <th>recipeID</th>
+              <th>rating</th>
+              <th>comment</th>
+              <th>imageURL</th>
+            </tr>
+          </thead>
+          <tbody>
+            {queryResponse.map((review) => {
+              return (
+                <tr>
+                  <td>{review.reviewID}</td>
+                  <td>{review.userID}</td>
+                  <td>{review.recipeID}</td>
+                  <td>{review.rating}</td>
+                  <td>{review.comment}</td>
+                  <td>{review.imageURL}</td>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                    onClick={updateQuery(review.reviewID)}
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    data-dismiss="modal"
+                    onClick={deleteQuery(review.reviewID)}
+                  >
+                    Delete
+                  </button>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
-export default ReviewsTable
+export default ReviewsTable;
