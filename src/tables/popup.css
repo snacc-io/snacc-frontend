@@ -1,0 +1,24 @@
+.hidden{
+	display: none;
+}
+
+.backdrop{
+	inset: 0;
+	position: fixed;
+	background-color: darkgray;
+	opacity: 85%;
+}
+
+.popup{
+	inset: 20%;
+	background-color: white;
+	position: fixed;
+	padding: 20px;
+	overflow-y: auto;
+}
+
+.popup button{
+	margin: 10px 30px;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
