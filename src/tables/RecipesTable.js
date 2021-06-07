@@ -131,6 +131,7 @@ function RecipesTable() {
                 type="text"
                 className="form-control"
                 name="userID"
+                placeholder="Select a user"
                 onChange={(e) => {
                   setUserID(e.target.value);
                 }}

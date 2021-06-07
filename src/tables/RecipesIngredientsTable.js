@@ -54,13 +54,14 @@ function RecipesIngredientsTable() {
   const deleteQuery = (ID) => {
     return () => {
       Axios.post(`${api.url}/api/RecipesIngredients/Delete`, {
-        id: ID,
+       recipeID: ID.recipeID,
+       ingredientID: ID.ingredientID
       }).then((response) => {
         if (response) {
           alert("successful query");
           setQueryResponse(
             queryResponse.filter((val) => {
-              return val.recipeIngredientID !== ID;  /// Need to figure out how to reference composite key
+              return val.ingredientID !== ID.ingredientID || val.recipeID !== ID.recipeID; 
             })
           );
         } else alert("Failed query");
@@ -81,6 +82,7 @@ function RecipesIngredientsTable() {
                 type="text"
                 className="form-control"
                 name="recipeID"
+                placeholder="Select a recipe"
                 onChange={(e) => {
                 setRecipeID(e.target.value);
                 }}
@@ -102,6 +104,7 @@ function RecipesIngredientsTable() {
                 type="text"
                 className="form-control"
                 name="ingredientID"
+                placeholder="Select an ingredient"
                 onChange={(e) => {
                 setIngredientID(e.target.value);
                 }}
@@ -159,7 +162,10 @@ function RecipesIngredientsTable() {
                           type="button" 
                           className="btn btn-danger" 
                           data-dismiss="modal"
-                          onClick={deleteQuery(recipe_ingredient.id)} //TODO figure out how to reference the composite key
+                          onClick={deleteQuery(
+                            recipe_ingredient
+
+                          )} 
                         >
                           Delete
                        </button>

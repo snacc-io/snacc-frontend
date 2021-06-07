@@ -125,6 +125,7 @@ function ReviewsTable() {
                 <select
                     type="text"
                     className="form-control"
+                    placeholder="Select a user"
                     name="userID"
                     onChange={(e) => {
                     setUserID(e.target.value);
@@ -148,6 +149,7 @@ function ReviewsTable() {
                     type="text"
                     className="form-control"
                     name="recipeID"
+                    placeholder="Select a recipe"
                     onChange={(e) => {
                     setRecipeID(e.target.value);
                     }}
