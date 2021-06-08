@@ -416,19 +416,22 @@ function RecipesTable() {
 
       <div className="header__search">
       <div className="container home__container my-5">
-        <input 
-        className="header__searchInput" 
-        placeholder="Search for a recipe" 
-        type="text" 
-        value={searchString}
-        onChange={(e) => {
-          setSearchString(e.target.value);
-          if (e.key ==='Enter') {
-            searchQueryResults(searchString)
-          }
-        }}
 
-        />
+          <input 
+          className="header__searchInput" 
+          placeholder="Search for a recipe" 
+          type="text" 
+          value={searchString}
+          onChange={(e) => {
+            setSearchString(e.target.value);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              searchQueryResults(searchString);
+            }
+          }}
+          />
+
 
         <button
           type="button"
