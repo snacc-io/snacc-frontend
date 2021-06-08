@@ -248,7 +248,7 @@ function RecipesTable() {
               popupBackdrop.current.classList.toggle("hidden");
             }}
           >
-            cancle
+            cancel
           </button>
         </div>
       </div>
