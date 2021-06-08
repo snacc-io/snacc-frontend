@@ -75,3 +75,12 @@ WHERE reviewID = :id_supplied_from_frontend;
 
 
 -- No need to update RecipeIngredients table
+
+
+-- Search Recipes
+SELECT * FROM Recipes 
+    WHERE 
+    recipeName LIKE :searchString
+    OR
+    recipeDescription LIKE :searchString
+;

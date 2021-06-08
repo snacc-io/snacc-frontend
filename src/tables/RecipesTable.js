@@ -11,6 +11,8 @@ function RecipesTable() {
   const [queryResponse, setQueryResponse] = useState([]);
   const [userList, setUserList] = useState([]);
 
+  const [searchString, setSearchString] = useState("");
+
   const [recipeID, setRecipeID] = useState(0);
   const [userID, setUserID] = useState(0);
   const [recipeName, setRecipeName] = useState("");
@@ -112,6 +114,16 @@ function RecipesTable() {
       });
     };
   };
+
+
+  const searchQueryResults = (searchString) => {
+    return () => {   
+      Axios.get(`${api.url}/api/Search/Recipes/${searchString}`).then((response) => {
+          setQueryResponse(response.data);
+      }); 
+    };
+  };
+
   return (
     <div className="home__container">
       <div ref={popupBackdrop} className="hidden backdrop"></div>
@@ -404,8 +416,28 @@ function RecipesTable() {
 
       <div className="header__search">
       <div className="container home__container my-5">
-        <input className="header__searchInput" placeholder="Search for a recipe" type="text" />
-        <SearchIcon className="header__searchIcon" />
+        <input 
+        className="header__searchInput" 
+        placeholder="Search for a recipe" 
+        type="text" 
+        value={searchString}
+        onChange={(e) => {
+          setSearchString(e.target.value);
+          if (e.key ==='Enter') {
+            searchQueryResults(searchString)
+          }
+        }}
+
+        />
+
+        <button
+          type="button"
+          className="btn btn-primary"
+          data-dismiss="modal"
+          onClick={searchQueryResults(searchString)}
+        >
+          Search
+        </button>
       </div>
       </div>
 
