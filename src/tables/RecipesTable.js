@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Axios from "axios";
 import { api } from "../apiPath.js";
 import "./popup.css";
+import Header from "../components/Header.js";
+import "../components/Header.css";
+import SearchIcon from "@material-ui/icons/Search";
 
 function RecipesTable() {
   const [SQLQuery, setSQLQeury] = useState("");
@@ -398,6 +401,13 @@ function RecipesTable() {
           </table>
         </div>
       </form>
+
+      <div className="header__search">
+      <div className="container home__container my-5">
+        <input className="header__searchInput" placeholder="Search for a recipe" type="text" />
+        <SearchIcon className="header__searchIcon" />
+      </div>
+      </div>
 
       <div class=" table-responsive  my-5">
         <table class="table table-bordered">
