@@ -134,7 +134,7 @@ function UsersTable() {
               popupBackdrop.current.classList.toggle("hidden");
             }}
           >
-            Cancle
+            Cancel
           </button>
         </div>
       </div>
