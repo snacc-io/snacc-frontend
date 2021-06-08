@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Axios from "axios"
 import { api } from "../apiPath.js"
+import "./popup.css";
 
 
 
@@ -12,6 +13,12 @@ function IngredientsTable() {
 
   const [ingredientID, setIngredientID] = useState(0);
   const [ingredientName, setIngredientName] = useState("");
+
+  const [popupIngredientID, setPopupIngredientID] = useState(0);
+  const [popupIngredientName, setPopupIngredientName] = useState("");
+
+  const popupBackdrop = useRef(null);
+  const popup = useRef(null);
 
   useEffect(() => {
       Axios.get(`${api.url}/api/Ingredients`).then((response) => {
@@ -34,7 +41,31 @@ function IngredientsTable() {
     });
   };
 
-  const updateQuery = (ID) => {};
+  const updateButton = (data) => {
+    return () => {
+      setPopupIngredientID(data.ingredientID);
+      setPopupIngredientName(data.ingredientName);
+      popup.current.classList.toggle("hidden");
+      popupBackdrop.current.classList.toggle("hidden");
+    };
+  };
+
+  const updateQuery = (data) => {
+    Axios.post(`${api.url}/api/Ingredients/Update`, data).then((response) => {
+      if (response.data.affectedRows) {
+        alert("successful query");
+        setQueryResponse([
+          ...queryResponse.filter((val) => {
+            return val.ingredientID !== data.ingredientID;
+          }),
+          data,
+        ]);
+        document.getElementsByName("ingredientID")[0].value = data.ingredientID;
+        popup.current.classList.toggle("hidden");
+        popupBackdrop.current.classList.toggle("hidden");
+      } else alert("Failed query");
+    });
+  };
 
   const deleteQuery = (ID) => {
     return () => {
@@ -55,6 +86,54 @@ function IngredientsTable() {
 
     return (
    <div className="home__container">
+      
+      {/* Update popup */}
+      <div ref={popupBackdrop} className="hidden backdrop"></div>
+      <div ref={popup} className="hidden popup">
+        <label>ingredientID:</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder={popupIngredientID}
+          disabled
+          name="ingredientID"
+          onChange={(e) => {
+            setIngredientID(e.target.value);
+          }}
+        />
+        <label>ingredientName:</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="ingredientName"
+          name="ingredientName"
+          value={popupIngredientName}
+          onChange={(e) => {
+            setPopupIngredientName(e.target.value);
+          }}
+        />
+        
+        <div>
+          <button
+            onClick={() => {
+              updateQuery({
+                ingredientID: popupIngredientID,
+                ingredientName: popupIngredientName,
+              });
+            }}
+          >
+            Confirm
+          </button>
+          <button
+            onClick={() => {
+              popup.current.classList.toggle("hidden");
+              popupBackdrop.current.classList.toggle("hidden");
+            }}
+          >
+            cancel
+          </button>
+        </div>
+      </div>
 
     <form>
     <div className="container table-responsive home__container my-5">
@@ -116,12 +195,14 @@ function IngredientsTable() {
                     <td>{ingredient.ingredientID}</td>
                     <td>{ingredient.ingredientName}</td>
                     <td>
-                    <button 
-                      type="button" 
-                      className="btn btn-secondary" 
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
                       data-dismiss="modal"
-                      >
-                        Update
+                      name={`Update${ingredient.ingredientID}`}
+                      onClick={updateButton(ingredient)}
+                    >
+                      Update
                     </button>
 
                     <button 

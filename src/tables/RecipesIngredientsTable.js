@@ -12,6 +12,8 @@ function RecipesIngredientsTable() {
   const [recipeID, setRecipeID] = useState(0);
   const [ingredientID, setIngredientID] = useState();
 
+
+
   useEffect(() => {
       Axios.get(`${api.url}/api/RecipesIngredients`).then((response) => {
       setQueryResponse(response.data);
@@ -47,6 +49,7 @@ function RecipesIngredientsTable() {
         } else alert("Failed query");
       });
   }
+
 
 
   const deleteQuery = (ID) => {
