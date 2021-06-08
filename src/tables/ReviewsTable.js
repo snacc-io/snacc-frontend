@@ -156,7 +156,7 @@ function ReviewsTable() {
           setPopupRecipeID(e.target.value);
         }}
       >
-        {userList.map((recipe) => {
+        {recipeList.map((recipe) => {
           console.log("Returning userlist map");
           return (
             <option value={recipe.recipeID}>
