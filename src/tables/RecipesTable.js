@@ -80,7 +80,6 @@ function RecipesTable() {
   };
 
   const updateQuery = (data) => {
-    console.log("INSIDE UPDATEQUERY");
     Axios.post(`${api.url}/api/Recipes/Update`, data).then((response) => {
       if (response.data.affectedRows) {
         alert("successful query");
@@ -90,7 +89,6 @@ function RecipesTable() {
           }),
           data,
         ]);
-        document.getElementsByName("recipeID")[0].value = data.recipeID;
         popup.current.classList.toggle("hidden");
         popupBackdrop.current.classList.toggle("hidden");
       } else alert("Failed query");
@@ -102,7 +100,6 @@ function RecipesTable() {
       Axios.post(`${api.url}/api/Recipes/Delete`, {
         recipeID: ID,
       }).then((response) => {
-        console.log("DELETE QUERY: \n" + response);
         if (response) {
           Axios.get(`${api.url}/api/Recipes`).then((response) => {
             setQueryResponse(response.data);
