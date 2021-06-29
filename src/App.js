@@ -112,16 +112,9 @@ function App() {
             <CreateRecipe />
             <Footer />
           </Route>
-          <Route path="/recipe">
+          <Route path="/:username/:recipe_name" component="params">
             <Header />
-            <RecipePage
-              id="12321341"
-              title="Some tasty recipe"
-              titleBlurb="A delicious thing to eat"
-              description="Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum Lorum ipsum "
-              rating={5}
-              image="https://pro2-bar.myportfolio.com/v1/assets/f015544c-b38d-49fc-a1d1-7e906e042eee/1eff550b-2fe8-43a0-bc5c-d1771d4a4840_rw_1920.jpg?h=1270724a86b5a957115c200af1d66551"
-            />
+            <RecipePage/>
             <Footer />
           </Route>
           <Route path="/">
