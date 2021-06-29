@@ -13,11 +13,7 @@ import Ingredient from "./UI/Ingredient";
 import Register from "./UI/Register";
 import CreateReview from "./UI/CreateReview";
 import IndexPage from "./UI/indexPage";
-import RecipesIngredientsTable from "./tables/RecipesIngredientsTable"
-import UsersTable from "./tables/UsersTable"
-import ReviewsTable from "./tables/ReviewsTable"
-import RecipesTable from "./tables/RecipesTable"
-import IngredientsTable from "./tables/IngredientsTable"
+
 
 function App() {
   useEffect(() => {
@@ -52,41 +48,7 @@ function App() {
             <IndexPage />
             <Footer />
           </Route>
-          <Route path="/IngredientsTable">
-            <Header />
-            <IngredientsTable />
-            <Footer />
-          </Route>
-          <Route path="/UsersTable">
-            <Header />
-            <UsersTable />
-            <Footer />
-          </Route>
-          <Route path="/RecipesTable">
-            <Header />
-            <RecipesTable />
-            <Footer />
-          </Route>
-          <Route path="/RecipesTable">
-            <Header />
-            <RecipesTable />
-            <Footer />
-          </Route>
-          <Route path="/IngredientsTable">
-            <Header />
-            <IngredientsTable />
-            <Footer />
-          </Route>
-          <Route path="/RecipesIngredientsTable">
-            <Header />
-            <RecipesIngredientsTable />
-            <Footer />
-          </Route>
-          <Route path="/ReviewsTable">
-            <Header />
-            <ReviewsTable />
-            <Footer />
-          </Route>
+
           <Route path="/login">
             <Header />
             <Login />
