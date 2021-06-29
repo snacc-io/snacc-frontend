@@ -16,14 +16,14 @@
     display: flex;
 }
 
-.recipe > img {
+.recipe>img {
     max-height: 200px;
     width: 100%;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
-.recipe > button {
+.recipe>button {
     background: lightgray;
     border: 1px solid;
     margin-top: 10px;
@@ -38,4 +38,8 @@
 .recipe__info {
     height: 100px;
     margin-bottom: 15px;
+}
+
+ul, ol {
+    padding: revert;
 }
